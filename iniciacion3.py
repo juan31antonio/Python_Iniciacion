@@ -15,7 +15,6 @@ def main():
     perimetro = calcularPerimetro(base, altura)
     print("El area es: ",area," y el perimetro es: ",perimetro)
 
-
 # Ejercicio 2:
 count = 0
 def calcAñosBisiestos(año1, año2):
@@ -69,8 +68,8 @@ def main():
     listaPalabras = []
     while bucle:
         palabra = input("Dime una palabra ")
-        indice = listaPalabras.index(palabra)
-        if indice:
+        
+        if palabra in listaPalabras:
             print("Esa palabra ya esta en la lista")
         else:
             if palabra == "FIN":
@@ -239,6 +238,203 @@ def main():
     print("El promedio es: ",promedio," la maxima nota es: ",max," y la minima nota es: ",min)
 
 # Ejercicio 9:
+
+inventario = {}
+def agregarProducto():
+    nombre = input("Ingrese el nombre del producto: ")
+    cantidad = int(input("Ingrese la cantidad del producto: "))
+    precio = float(input("Ingrese el precio del producto: "))
+    inventario[nombre] = {'cantidad': cantidad, 'precio': precio}
+    print("Producto agregado correctamente.")
+
+def actualizarProducto():
+    nombre = input("Ingrese el nombre del producto a actualizar: ")
+    if nombre in inventario:
+        nueva_cantidad = int(input("Ingrese la nueva cantidad del producto: "))
+        inventario[nombre]['cantidad'] = nueva_cantidad
+        print("Producto actualizado correctamente.")
+    else:
+        print("El producto no existe en el inventario.")
+
+def valorProducto():
+    nombre = input("Ingrese el nombre del producto: ")
+    if nombre in inventario:
+        valor = inventario[nombre]['cantidad'] * inventario[nombre]['precio']
+        print("El valor del inventario del producto es:", valor)
+    else:
+        print("El producto no existe en el inventario.")
+
+def valorTotalInventario():
+    total = sum(inventario[producto]['cantidad'] * inventario[producto]['precio'] for producto in inventario)
+    print("El valor total del inventario es:", total)
+
+def mostrarInventario():
+    if inventario:
+        print("Inventario actual:")
+        for producto, datos in inventario.items():
+            print("Nombre:", producto, "Cantidad:", datos['cantidad'], "Precio:", datos['precio'])
+    else:
+        print("El inventario esta vacio.")
+
 def main():
+    while True:
+        print("\nOpciones:")
+        print("1. Agregar producto")
+        print("2. Actualizar producto")
+        print("3. Ver valor de un producto")
+        print("4. Ver valor total del inventario")
+        print("5. Mostrar inventario")
+        print("6. Salir")
+        opcion = int(input("Seleccione una opcion: "))
+        
+        if opcion == 1:
+            agregarProducto()
+        elif opcion == 2:
+            actualizarProducto()
+        elif opcion == 3:
+            valorProducto()
+        elif opcion == 4:
+            valorTotalInventario()
+        elif opcion == 5:
+            mostrarInventario()
+        elif opcion == 6:
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opcion no valida. Intente nuevamente.")
+
 
 # Ejercicio 10:
+
+tienda = {}
+carrito = {}
+clave_administrador = "admin123"
+
+def es_administrador():
+    clave = input("Ingrese la clave de administrador: ")
+    return clave == clave_administrador 
+
+def agregarProducto():
+    if es_administrador():
+        nombre = input("Ingrese el nombre del producto: ")
+        stock = int(input("Ingrese el stock del producto: "))
+        precio = float(input("Ingrese el precio del producto: "))
+        tienda[nombre] = {'stock': stock, 'precio': precio}
+        print("Producto agregado correctamente.")
+    else:
+        print("Clave incorrecta. No puede agregar productos.")
+
+def actualizarProducto():
+    if es_administrador():
+        nombre = input("Ingrese el nombre del producto a actualizar: ")
+        if nombre in tienda:
+            nuevo_stock = int(input("Ingrese el nuevo stock del producto: "))
+            nuevo_precio = float(input("Ingrese el nuevo precio del producto: "))
+            tienda[nombre]['stock'] = nuevo_stock
+            tienda[nombre]['precio'] = nuevo_precio
+            print("Producto actualizado correctamente.")
+        else:
+            print("El producto no existe en la tienda.")
+    else:
+        print("Clave incorrecta. No puede actualizar productos.")
+
+def mostrarProductos():
+    if tienda:
+        print("Productos disponibles en la tienda:")
+        for producto, datos in tienda.items():
+            print(f"Nombre: {producto}, Stock: {datos['stock']}, Precio: {datos['precio']}")
+    else:
+        print("La tienda esta vacia.")
+
+def agregarAlCarrito():
+    nombre = input("Ingrese el nombre del producto a agregar al carrito: ")
+    if nombre in tienda and tienda[nombre]['stock'] > 0:
+        cantidad = int(input("Ingrese la cantidad del producto: "))
+        if cantidad <= tienda[nombre]['stock']:
+            if nombre in carrito:
+                carrito[nombre] += cantidad
+            else:
+                carrito[nombre] = cantidad
+            tienda[nombre]['stock'] -= cantidad
+            print("Producto agregado al carrito.")
+        else:
+            print("No hay suficiente stock disponible.")
+    else:
+        print("El producto no existe o no hay stock disponible.")
+
+def retirarDelCarrito():
+    nombre = input("Ingrese el nombre del producto a retirar del carrito: ")
+    if nombre in carrito:
+        cantidad = int(input("Ingrese la cantidad a retirar: "))
+        if cantidad <= carrito[nombre]:
+            carrito[nombre] -= cantidad
+            tienda[nombre]['stock'] += cantidad
+            if carrito[nombre] == 0:
+                del carrito[nombre]
+            print("Producto retirado del carrito.")
+        else:
+            print("No tienes esa cantidad en el carrito.")
+    else:
+        print("El producto no esta en el carrito.")
+
+def mostrarCarrito():
+    if carrito:
+        print("Contenido del carrito:")
+        for producto, cantidad in carrito.items():
+            print(f"Nombre: {producto}, Cantidad: {cantidad}")
+    else:
+        print("El carrito esta vacio.")
+
+def costoTotalCarrito():
+    total = sum(carrito[producto] * tienda[producto]['precio'] for producto in carrito)
+    print("El costo total del carrito es:", total)
+
+def realizarCompra():
+    if carrito:
+        costoTotalCarrito()
+        confirmar = input("¿Desea realizar la compra?: ")
+        if confirmar.lower() == 'si':
+            carrito.clear()
+            print("Compra realizada con éxito.")
+        else:
+            print("Compra cancelada.")
+    else:
+        print("El carrito esta vacio.")
+
+def main():
+    while True:
+        print("\nOpciones:")
+        print("1. Agregar producto a la tienda")
+        print("2. Actualizar producto en la tienda")
+        print("3. Mostrar productos de la tienda")
+        print("4. Agregar producto al carrito")
+        print("5. Retirar producto del carrito")
+        print("6. Mostrar contenido del carrito")
+        print("7. Ver costo total del carrito")
+        print("8. Realizar compra")
+        print("9. Salir")
+        opcion = int(input("Seleccione una opcion: "))
+        
+        if opcion == 1:
+            agregarProducto()
+        elif opcion == 2:
+            actualizarProducto()
+        elif opcion == 3:
+            mostrarProductos()
+        elif opcion == 4:
+            agregarAlCarrito()
+        elif opcion == 5:
+            retirarDelCarrito()
+        elif opcion == 6:
+            mostrarCarrito()
+        elif opcion == 7:
+            costoTotalCarrito()
+        elif opcion == 8:
+            realizarCompra()
+        elif opcion == 9:
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opcion no valida")
+
+main()
