@@ -1,0 +1,10 @@
+2025-01-29 10:01:00 192.168.0.1 Connection established
+2025-01-29 10:02:15 192.168.0.2 Error: Access denied
+2025-01-29 10:03:00 192.168.0.1 Request received
+2025-01-29 10:04:45 192.168.0.3 Connection closed
+2025-01-29 10:05:10 192.168.0.1 Error: Timeout expired
+2025-01-29 10:06:30 192.168.0.2 Connection established
+2025-01-29 10:07:45 192.168.0.4 Error: Server not found
+2025-01-29 10:08:00 192.168.0.1 Request completed
+2025-01-29 10:09:30 192.168.0.2 Error: Permission denied
+2025-01-29 10:10:45 192.168.0.3 Connection established
