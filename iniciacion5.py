@@ -124,7 +124,7 @@ main()"""
 main()"""
 # Ejercicio 10
 
-def main():
+"""def main():
     fichero = open("servidor.log", "r")
     ficheroError = open("errores.log", "w")
     ips = []
@@ -143,5 +143,58 @@ def main():
         else:
             diccionario[ip] = 1
     print(diccionario)
-main()
+main()"""
 # Ejercicio 11
+
+def main():
+    bucle = True
+    while bucle:
+        print("Bloc de Notas")
+        print("1--> Agregar nueva nota")
+        print("2--> Leer todas las notas")
+        print("3--> Buscar notas por palabra clave")
+        print("4--> Borrar una nota especifica")
+        print("5--> Salir")
+        
+        opcion = input("Selecciona una opcion: ")
+
+        if opcion == "1":
+            fichero = open("notas.txt", "a")
+            nota = input("Dime la nota que quieres agregar: ")
+            fichero.write(nota+"\n")
+            fichero.close()
+
+        elif opcion == "2": 
+            fichero = open("notas.txt", "r")
+            lista = fichero.readlines()
+            for linea in lista:
+                print(linea) 
+            fichero.close()  
+
+        elif opcion == "3":
+            fichero = open("notas.txt", "r")
+            palabraClave = input("Dime la palabra clave por la que quieres buscar: ")
+            lista = fichero.readlines()
+            for linea in lista:
+                if palabraClave in linea:
+                    print(linea)   
+            fichero.close()
+
+        elif opcion == "4":
+            fichero = open("notas.txt", "r")
+            lista = fichero.readlines()
+            for i in range(0,len(lista)):
+                print(str(i)+"--> "+lista[i])  
+            borrarNota = input("Dime que nota quieres que borre: ")
+            lista.pop(int(borrarNota))
+            fichero = open("notas.txt", "w")
+            for nota in lista:
+                fichero.write(nota)
+            fichero.close()
+
+        elif opcion == "5":
+            print("Saliendo...")
+            break
+        else:
+            print("Introducido opcion no valida")
+main()
