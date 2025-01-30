@@ -91,7 +91,12 @@ def main():
             empleados[departamento]["numeroEmpleados"] += 1
         else:
             empleados[departamento] = {"salarioTotal": salario, "numeroEmpleados": 1}
-    
-    salariosMedia = {}
-
+    medias = {}
+    for departamento in empleados:
+        media = departamento["salarioTotal"]/departamento["numeroEmpleados"]
+        medias[departamento] = {"media": media}
+    fichero.close()
+    fichero = open("resumen_departamentos.json","w")
+    json.dump(fichero)
+    fichero.close()
 main()
