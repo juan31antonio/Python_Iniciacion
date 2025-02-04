@@ -8,6 +8,7 @@ def funcionRecibe(parrafo):
             diccionario[palabra] += 1
         else:
             diccionario[palabra] = 1
+    
 
 funcionRecibe("Hola que yal estas")
 #Ejercicio 2:
