@@ -80,7 +80,7 @@ main()"""
 #Ejercicio 7
 
 def main():
-    fichero = open("empleados.json","r")
+    fichero = open("empleados.json", "r")
     diccionario = json.load(fichero)
     empleados = {}
     for dict in diccionario:
@@ -93,10 +93,10 @@ def main():
             empleados[departamento] = {"salarioTotal": salario, "numeroEmpleados": 1}
     medias = {}
     for departamento in empleados:
-        media = departamento["salarioTotal"]/departamento["numeroEmpleados"]
+        media = empleados[departamento]["salarioTotal"] / empleados[departamento]["numeroEmpleados"]
         medias[departamento] = {"media": media}
     fichero.close()
-    fichero = open("resumen_departamentos.json","w")
-    json.dump(fichero)
+    fichero = open("resumen_departamentos.json", "w")
+    json.dump(medias, fichero)
     fichero.close()
 main()
