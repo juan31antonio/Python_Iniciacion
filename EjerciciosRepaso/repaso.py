@@ -1,37 +1,20 @@
 import json
 
 #Ejercicio 1:
-"""try:
-    def funcionRecibe(parrafo):
-        lista = parrafo.split()
-        diccionario = {}
-        for palabra in lista:
+"""def funcionRecibe(parrafo):
+    lista = parrafo.split()
+    diccionario = {}
+    for palabra in lista:
+        if palabra.isalpha():
             if palabra in diccionario:
                 diccionario[palabra] += 1
             else:
                 diccionario[palabra] = 1
-        
-        diccionarioOrdenado = {}
-        valores = list(diccionario.values())
 
-        for i in range(len(valores)):
-            for j in range(i + 1, len(valores)):
-                if valores[i] < valores[j]:
-                    valores[i], valores[j] = valores[j], valores[i]
-        
-        for frecuencia in valores:
-            for clave in diccionario:
-                if diccionario[clave] == frecuencia and clave not in diccionarioOrdenado:
-                    diccionarioOrdenado[clave] = diccionario[clave]
-                    break
-        
-        return diccionarioOrdenado
+    diccionarioOrdenado = dict(sorted(diccionario.items(), key=lambda item: item[1], reverse=True))
+    return diccionarioOrdenado
 
-except ValueError:
-    print("Se ha introducido un valor incorrecto")
-    
-
-diccionario = funcionRecibe("Hola que tal estas, Hola que que")
+diccionario = funcionRecibe("Hola que tal estas, Hola que que 123 456")
 print(diccionario)"""
 
 #Ejercicio 2:
@@ -64,7 +47,7 @@ conversionEurosDolares()"""
 
 #Ejercicio 3:
 
-"""def pedir_texto():
+"""def pedirTexto():
     bucle = True
     while bucle:
         texto = input("Introduzca un texto: ")
@@ -77,16 +60,43 @@ conversionEurosDolares()"""
     textoSplit = texto.split()
 
     for palabra in textoSplit:
-        lista.append(palabra.lower().strip(".,!?;:"))
-
+        lista.append(palabra.lower().strip(".,!¡¿?;:"))
     print(lista)
 
-pedir_texto()"""
-
-
+pedirTexto()"""
 
 #Ejercicio 4:
+
+"""ventas = {
+        "producto1": {"precio":10, "cantidad":5 },
+        "producto2": {"precio":20, "cantidad":3 }
+    }
+
+def calcTotal(ventas):
+    totalIngresos = 0
+    for clave in ventas:
+        producto = ventas[clave]
+        totalIngresos += producto["precio"] * producto["cantidad"]
+    return totalIngresos
+
+def ventaProductos():
+    totalIngresos = calcTotal(ventas)
+    fichero = open("totalIngresos.json","w")
+    json.dump({"totalIngresos": totalIngresos},fichero)
+    
+
+def restarProductosVendidos():
+    productoRestar = input("Dime el producto que vas a restar: ")
+    cantidad = int(input("Dime cuantos productos quieres restar: "))
+    ventas[productoRestar]["cantidad"] -= cantidad 
+    print(ventas)
+
+ventaProductos()
+restarProductosVendidos()"""
+
 #Ejercicio 5:
+
+
 #Ejercicio 6:
 #Ejercicio 7:
 #Ejercicio 8:
