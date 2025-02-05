@@ -1,0 +1,1 @@
+{"Cliente1": {"nombre": "Roberto", "correo": "roberto@example.com", "compras": ["Manzana", "Banana", "Naranja"]}, "Cliente2": {"nombre": "Godofredo", "correo": "godofredo@example.com", "compras": ["Manzana", "Banana"]}, "Cliente3": {"nombre": "Manu", "correo": "manu@example.com", "compras": ["Naranja", "Banana", "Manzana", "Uva"]}}

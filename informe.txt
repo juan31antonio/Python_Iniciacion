@@ -1,0 +1,3 @@
+Producto: Manzana Ventas: 9.0 euros
+Producto: Banana Ventas: 3.6 euros
+Producto: Naranja Ventas: 7.200000000000001 euros
