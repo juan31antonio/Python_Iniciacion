@@ -128,8 +128,9 @@ class Animal(SerVivo):
         print(self.nombre," se movio y gasto ",gasto ," de energia.")
 
     def comer(self):
-        self.energia += 2 * random.randint(2,10)
-
+        energiaRecuperada= 2 * random.randint(2,10)
+        self.energia += energiaRecuperada
+        print(self.nombre,"comio y recupero ",energiaRecuperada ," de energia.")
 
 class Plantas(SerVivo):
     def __init__(self, nombre, energia, crecimiento):
@@ -139,3 +140,8 @@ class Plantas(SerVivo):
     def crecer(self):
         self.crecimiento += 0.5
         self.energia -= 3
+        print("La planta ha crecido 0.5 centimetros y ha gastado 3 de energia")
+
+    def fotosintesis(self):
+        self.energia += 3
+        print("La planta ha hecho la fotosintesis y ha recuperado 3 de energia")
