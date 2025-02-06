@@ -194,7 +194,7 @@ print("Información de la moto: ")
 moto.mostrar_informacion_moto()"""
 
 # Ejercicio 9:
-class Libro:
+"""class Libro:
     def __init__(self, titulo, autor):
         self.titulo = titulo
         self.autor = autor
@@ -240,3 +240,4 @@ biblioteca.agregar_libro(libro3)
 biblioteca.mostrar_libros()
 biblioteca.eliminar_libro("Don Quijote de la Mancha")
 biblioteca.mostrar_libros()
+"""
