@@ -120,7 +120,7 @@ class SerVivo():
 
 class Animal(SerVivo):
     def __init__(self, nombre, energia):
-        super().__init__(self,nombre,energia)
+        super().__init__(nombre,energia)
 
     def mover(self):
         gasto = 0.1 * random.randint(1,200)
@@ -132,9 +132,9 @@ class Animal(SerVivo):
         self.energia += energiaRecuperada
         print(self.nombre,"comio y recupero ",energiaRecuperada ," de energia.")
 
-class Plantas(SerVivo):
+class Planta(SerVivo):
     def __init__(self, nombre, energia, crecimiento):
-        super().__init__(self,nombre,energia)
+        super().__init__(nombre,energia)
         self.crecimiento = crecimiento
 
     def crecer(self):
@@ -145,3 +145,23 @@ class Plantas(SerVivo):
     def fotosintesis(self):
         self.energia += 3
         print("La planta ha hecho la fotosintesis y ha recuperado 3 de energia")
+
+def simulacionEcosistema(dias):
+    animal1 = Animal("Conejo", 100)
+    planta1 = Planta("Rosa", 50, 5)
+
+    for dia in range(1, dias + 1):
+        print("Dia", dia)
+
+        animal1.mover()
+        animal1.comer()
+
+        planta1.crecer()
+        planta1.fotosintesis()
+
+        print("Estado del", animal1.nombre, ":", animal1.energia, "de energia.")
+        print("Estado de la", planta1.nombre, ":", planta1.energia, "de energia y", planta1.crecimiento, "cm de crecimiento.")
+        print("-" * 20)
+
+simulacionEcosistema(6)
+
