@@ -72,4 +72,103 @@ juego()"""
 
 """Tiempo estimado 30-40 mins"""
 #Ejercicio 2
+"""dHexadecimal = {
+  "A": 10,
+  "B": 11,
+  "C": 12,
+  "D": 13,
+  "E": 14,
+  "F": 15
+}
+
+hexaBinario = {
+    "0": "0000",
+    "1": "0001",
+    "2": "0010",
+    "3": "0011",
+    "4": "0100",
+    "5": "0101",
+    "6": "0110",
+    "7": "0111",
+    "8": "1000",
+    "9": "1001",
+    "A": "1010",
+    "B": "1011",
+    "C": "1100",
+    "D": "1101",
+    "E": "1110",
+    "F": "1111"
+}
+
+hexadecimal = ["1A", "2F", "B4", "FF", "00", "5D"]
+
+
+
+tupla = ()
+
+def hexaADecimal(hexadecimalLista):
+    maximoValor = 0
+    numMaximo = ""
+    for num in hexadecimalLista:
+        total = 0
+        numInvertido = num[::-1]
+        for i in range(len(numInvertido)):
+            digito = numInvertido[i]
+            if digito.isdigit():
+                total += int(digito) * 16 ** i
+            else:
+                total += dHexadecimal[digito] * 16 ** i
+        if total > maximoValor:
+            maximoValor = total
+            numMaximo = num
+    tupla = (maximoValor, numMaximo)
+    print(tupla)
+hexaADecimal(hexadecimal)
+
+def hexadecimalABinario(numero):
+    binario = ""
+    for num in numero: 
+        binario += hexaBinario[num]  
+    print(binario)
+hexadecimalABinario("4F")
+
+def binarioADecimal(binario):
+    total = 0
+    binario = binario[::-1] 
+    for numero in range(len(binario)):
+        if binario[numero] == '1':
+            total += 2 ** numero
+    print(total)
+binarioADecimal("10100001")"""
+"""Tiempo estimado 30 mins"""
 #Ejercicio 3
+cine = [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","X","X","X"]]
+
+def gestionCine():
+    reserva = True
+    while reserva:
+        print("\n",cine[0],"\n",cine[1],"\n",cine[2],"\n",cine[3],"\n",cine[4])
+        reservar = input("Dime que silla quieres reservar columna:fila  o salir para terminar la reserva: ")
+        if reservar.lower() == "salir":
+            reserva = False
+            break
+        try:
+            posicion = reservar.split(":")
+            fila = int(posicion[0])
+            columna = int(posicion[1])
+            
+            if fila < 0 or fila >= len(cine) or columna < 0 or columna >= len(cine[0]):
+                print("Fila o columna no validas. Introduce valores dentro del rango")
+            elif cine[fila][columna] == "O":
+                print("Esa butaca ya esta reservada")
+            else:
+                cine[fila][columna] = "O"
+                print("\n",cine[0],"\n",cine[1],"\n",cine[2],"\n",cine[3],"\n",cine[4])
+                respuesta = input("Quieres hacer otra reserva? s/n: ")
+                if respuesta.lower() == "n":
+                    reserva = False
+
+        except (ValueError, IndexError):
+            print("Entrada no valida")
+    print("Cerrado reserva de entradas")
+gestionCine()
