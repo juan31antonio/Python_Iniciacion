@@ -148,7 +148,7 @@ def gestionCine():
     reserva = True
     while reserva:
         print("\n",cine[0],"\n",cine[1],"\n",cine[2],"\n",cine[3],"\n",cine[4])
-        reservar = input("Dime que silla quieres reservar columna:fila  o salir para terminar la reserva: ")
+        reservar = input("Dime que silla quieres reservar fila:columna  o salir para terminar la reserva: ")
         if reservar.lower() == "salir":
             reserva = False
             break
@@ -172,3 +172,4 @@ def gestionCine():
             print("Entrada no valida")
     print("Cerrado reserva de entradas")
 gestionCine()
+"""Tiempo estimado 25 mins"""
