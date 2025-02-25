@@ -22,7 +22,7 @@ main()"""
 
 #Ejercicio 2
 
-lista_animales = [
+"""lista_animales = [
     "Rata", "Buey", "Tigre", "Conejo", "Dragón", "Serpiente", 
     "Caballo", "Oveja", "Mono", "Gallo", "Perro", "Jabali"
 ]
@@ -38,6 +38,33 @@ def ejer2(anio):
 
     print(lista_animales[modulo_indice%12])
     print(lista_elementos[modulo_indice%10])
-ejer2(1977)
+ejer2(1977)"""
 
 #Ejercicio 3
+
+dictAgua = {"Fuego":2,"Electrico":1,"Planta":0.5}
+dictFuego = {"Planta":2,"Electrico":1,"Agua":0.5}
+dictPlanta = {"Agua":2,"Electrico":1,"Fuego":0.5}
+dictElectrico = {"Agua":2,"Fuego":1,"Planta":0.5}
+
+def combatePokemon(atacante, defensor, ataque, defensa):
+    debilidad = 0
+    if atacante == "Agua":
+        debilidad = dictAgua[defensor]
+    elif atacante == "Fuego":
+        debilidad = dictFuego[defensor]
+    elif atacante == "Planta":
+        debilidad = dictPlanta[defensor]
+    elif atacante == "Electrico":
+        debilidad = dictElectrico[defensor]
+    dañoHecho = 50 * (ataque/defensa) * debilidad
+    print("Has hecho ",dañoHecho," puntos de daño")
+
+def main():
+    atacante = input("Dime el tipo del atacante: ")
+    defensor = input("Dime el tipo del defensor: ")
+    ataque = int(input("Dime los puntos de ataque: "))
+    defensa = int(input("Dime los puntos de defensa: "))
+
+    combatePokemon(atacante,defensor,ataque,defensa)
+main()
