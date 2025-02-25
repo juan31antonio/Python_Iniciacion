@@ -41,22 +41,11 @@ def ejer2(anio):
 ejer2(1977)"""
 
 #Ejercicio 3
-
-dictAgua = {"Fuego":2,"Electrico":1,"Planta":0.5}
-dictFuego = {"Planta":2,"Electrico":1,"Agua":0.5}
-dictPlanta = {"Agua":2,"Electrico":1,"Fuego":0.5}
-dictElectrico = {"Agua":2,"Fuego":1,"Planta":0.5}
+tipos = {"Fuego":{"Planta":2,"Electrico":1,"Agua":0.5}, "Electrico":{"Agua":2,"Fuego":1,"Planta":0.5},
+ "Agua":{"Fuego":2,"Electrico":1,"Planta":0.5}, "Planta":{"Agua":2,"Electrico":1,"Fuego":0.5}}
 
 def combatePokemon(atacante, defensor, ataque, defensa):
-    debilidad = 0
-    if atacante == "Agua":
-        debilidad = dictAgua[defensor]
-    elif atacante == "Fuego":
-        debilidad = dictFuego[defensor]
-    elif atacante == "Planta":
-        debilidad = dictPlanta[defensor]
-    elif atacante == "Electrico":
-        debilidad = dictElectrico[defensor]
+    debilidad = tipos[atacante][defensor]
     dañoHecho = 50 * (ataque/defensa) * debilidad
     print("Has hecho ",dañoHecho," puntos de daño")
 
@@ -68,3 +57,6 @@ def main():
 
     combatePokemon(atacante,defensor,ataque,defensa)
 main()
+
+
+#Ejercicio 4
