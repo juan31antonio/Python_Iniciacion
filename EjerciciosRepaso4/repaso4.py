@@ -41,7 +41,7 @@ def ejer2(anio):
 ejer2(1977)"""
 
 #Ejercicio 3
-tipos = {"Fuego":{"Planta":2,"Electrico":1,"Agua":0.5}, "Electrico":{"Agua":2,"Fuego":1,"Planta":0.5},
+"""tipos = {"Fuego":{"Planta":2,"Electrico":1,"Agua":0.5}, "Electrico":{"Agua":2,"Fuego":1,"Planta":0.5},
  "Agua":{"Fuego":2,"Electrico":1,"Planta":0.5}, "Planta":{"Agua":2,"Electrico":1,"Fuego":0.5}}
 
 def combatePokemon(atacante, defensor, ataque, defensa):
@@ -56,7 +56,7 @@ def main():
     defensa = int(input("Dime los puntos de defensa: "))
 
     combatePokemon(atacante,defensor,ataque,defensa)
-main()
+main()"""
 
 
 #Ejercicio 4
