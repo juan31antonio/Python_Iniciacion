@@ -60,3 +60,48 @@ main()"""
 
 
 #Ejercicio 4
+
+class Contacto():
+    def __init__(self, nombre, telefono, email):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.email = email
+    def modificar(self, nuevoNombre, nuevoTelefono, nuevoEmail):
+        self.nombre = nuevoNombre
+        self.telefono = nuevoTelefono
+        self.email = nuevoEmail
+    def mostrarDatos(self):
+        print("Nombre: ",self.nombre," Telefono: ",self.telefono," Email: ",self.email)
+
+def main():
+    bucle = True
+    agenda = {}
+    while bucle:
+        respuesta = input("1 --> Añadir Contacto\n2 --> Lista de Contactos\n3 --> Buscar Contacto\n4 --> Editar Contacto\n5 --> Salir Agenda\nPulsa una opcion: ")
+        if respuesta == "1":
+            nombre = input("Dime el nombre del contacto: ")
+            telefono = input("Dime el telefono del contacto: ")
+            email = input("Dime el email del contacto: ")
+            contacto = Contacto(nombre,telefono,email)
+            agenda[nombre] = contacto
+        elif respuesta == "2":
+            for nombre in agenda:
+                agenda[nombre].mostrarDatos()
+        elif respuesta == "3":
+            nombre = input("Dime el nombre del contacto que quieres buscar: ")
+            if nombre in agenda:
+                agenda[nombre].mostrarDatos()
+            else:
+                input("Ese contacto no existe en la agenda: ")
+        elif respuesta == "4":
+            nombre = input("Dime el nombre del contacto que quieres modificar: ")
+            nuevoNombre = input("Dime el nuevo nombre: ")
+            nuevoTelefono = input("Dime el nuevo telefono: ")
+            nuevoEmail = input("Dime el nuevo email: ")
+            agenda[nombre].modificar(nuevoNombre, nuevoTelefono, nuevoEmail)
+        elif respuesta == "5":
+            print("Saliendo....")
+            bucle = False
+        else:
+            print("Opcion incorrecta")
+main()
