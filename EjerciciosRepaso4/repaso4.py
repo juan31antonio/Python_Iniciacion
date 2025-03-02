@@ -1,3 +1,5 @@
+import json
+
 #Ejercicio 1
 """def ejer1(lista1, lista2, bool):
     lista = []
@@ -61,7 +63,7 @@ main()"""
 
 #Ejercicio 4
 
-class Contacto():
+"""class Contacto():
     def __init__(self, nombre, telefono, email):
         self.nombre = nombre
         self.telefono = telefono
@@ -100,6 +102,47 @@ def main():
             nuevoEmail = input("Dime el nuevo email: ")
             agenda[nombre].modificar(nuevoNombre, nuevoTelefono, nuevoEmail)
         elif respuesta == "5":
+            print("Saliendo....")
+            bucle = False
+        else:
+            print("Opcion incorrecta")
+main()"""
+
+
+#Ejercicio 5
+
+class JuegoDeMesa():
+    def __init__(self, nombre, editorial, mecanica, dificultad):
+        self.nombre = nombre
+        self.editorial = editorial
+        self.mecanica = mecanica
+        self.dificultad = dificultad
+    def diccionario(self):
+        return {
+            "nombre": self.nombre,
+            "editorial": self.editorial,
+            "mecanica": self.mecanica,
+            "dificultad": self.dificultad
+        }
+    
+def main():
+    bucle = True
+    listaJuegos = []
+    while bucle:
+        respuesta = input("1 --> Agregar Juego\n2 --> Guardar JSON\n3 --> Salir\nPulsa una opcion: ")
+        if respuesta == "1":
+            nombre = input("Dime el nombre del juego: ")
+            editorial = input("Dime la editorial del juego: ")
+            mecanica = input("Dime la mecanica del juego: ")
+            dificultad = input("Dime la dificultad del juego: ")
+            juego = JuegoDeMesa(nombre,editorial,mecanica, dificultad)
+            listaJuegos.append(juego)
+            print("Juego agregado correctamente")
+        elif respuesta == "2":
+            fichero = open("JuegosDeMesa.json","w")
+            json.dump([juego.diccionario() for juego in listaJuegos],fichero)
+            fichero.close()
+        elif respuesta == "3":
             print("Saliendo....")
             bucle = False
         else:
